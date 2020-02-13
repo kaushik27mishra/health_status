@@ -12,7 +12,7 @@ export default class App extends Component {
       <BrowserRouter>
         <Switch>
           <ProtectedRoute exact path="/home" component={Main}/>
-          <ProtectedRoute exact path="/profile:id" component={User}/>
+          <ProtectedRoute exact path="/profile" component={User}/>
           <Route exact path="/" component={Login}/>
         </Switch>
       </BrowserRouter>

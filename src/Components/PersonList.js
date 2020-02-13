@@ -6,7 +6,32 @@ import Typography from '@material-ui/core/Typography'
 
 class PersonList extends Component {
     state = {
-        persons: [],
+        persons: [
+            {
+                name:"Kaushik Mishra",
+                key:1,
+                age:"19",
+                gender:"Male"
+            },
+            {
+                name:"Kaushik Mishra",
+                key:2,
+                age:"19",
+                gender:"Male"
+            },
+            {
+                name:"Kaushik Mishra",
+                key:3,
+                age:"19",
+                gender:"Male"
+            },
+            {
+                name:"Kaushik Mishra",
+                key:4,
+                age:"19",
+                gender:"Male"
+            },
+        ],
         searchString: ''
     }
 
@@ -41,7 +66,7 @@ class PersonList extends Component {
                             onChange={this.onSearchInputChange} />
                         <Grid container spacing={24} style={{padding: 24}}>
                             { this.state.persons.length ? this.state.persons.map(Currentperson => (
-                                <Grid item xs={12} sm={6} lg={4} xl={3}>
+                                <Grid item xs={12} sm={4} lg={4} xl={3} style={{padding: 24}}>
                                     <Persons person={Currentperson} />
                                 </Grid>
                             )) : 
@@ -50,7 +75,7 @@ class PersonList extends Component {
                             </Typography> }
                         </Grid>
                     </div>
-                ) : "No courses found" }
+                ) : "No Persons found" }
             </div>
         )
     }
