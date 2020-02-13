@@ -1,86 +1,62 @@
 import React, { Component } from 'react'
-import ReactApexChart from 'react-apexcharts'
+import {Chart} from 'react-google-charts'
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 export default class LineChart extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props)
+  
 
-        this.state = {
-          series: [{
-            name: 'XYZ MOTORS',
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-          }],
-          options: {
-            chart: {
-              type: 'area',
-              stacked: false,
-              height: 350,
-              zoom: {
-                type: 'x',
-                enabled: true,
-                autoScaleYaxis: true
-              },
-              toolbar: {
-                autoSelected: 'zoom'
-              }
-            },
-            dataLabels: {
-              enabled: false
-            },
-            markers: {
-              size: 0,
-            },
-            title: {
-              text: 'Stock Price Movement',
-              align: 'left'
-            },
-            fill: {
-              type: 'gradient',
-              gradient: {
-                shadeIntensity: 1,
-                inverseColors: false,
-                opacityFrom: 0.5,
-                opacityTo: 0,
-                stops: [0, 90, 100]
-              },
-            },
-            yaxis: {
-              labels: {
-                formatter: function (val) {
-                  return (val / 1000000).toFixed(0);
+  }
+  
+  render() {
+    var ecgData = this.props.data
+      
+    var data = [['ECG','key']]
+    for (var i=0;i<ecgData.length;++i) {
+      data.push([i,ecgData[i]]);
+    }
+
+    return (
+      <div>
+        <Chart
+          width={'100%'}
+          chartType="LineChart"
+          loader={<Loader type="Bars" color="#00BFFF" height={100} width={100} timeout={3000} />}
+          data={data}
+          options={{
+              chartArea: { height: '80%', width: '90%' },
+              hAxis: { slantedText: false },
+              vAxis: { viewWindow: { min: this.props.min, max: this.props.max} },
+              series: { curveType: 'function' },
+              legend: { position: 'none' },
+          }}
+          rootProps={{ 'data-testid': '3' }}
+          chartPackages={['corechart', 'controls']}
+          controls={[
+            {
+              controlType: 'ChartRangeFilter',
+              options: {
+                filterColumnIndex: 0,
+                ui: {
+                  chartType: 'LineChart',
+                  chartOptions: {
+                    chartArea: { width: '90%', height: '50%' },
+                    hAxis: { baselineColor: 'none' },
+                  },
                 },
               },
-              title: {
-                text: 'Price'
+              controlPosition: 'bottom',
+              controlWrapperParams: {
+                state: {
+                  range: { start: this.props.start, end: this.props.end },
+                },
               },
             },
-            xaxis: {
-              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-            },
-            tooltip: {
-              shared: false,
-              y: {
-                formatter: function (val) {
-                  return (val / 1000000).toFixed(0)
-                }
-              }
-            }
-          },
-        
-        
-        };
-      }
-
-    render() {
-        return (
-            <div>
-                <ReactApexChart 
-                    options={this.state.options} 
-                    series={this.state.series} 
-                    type="area" 
-                    height={350} 
-                    />
-            </div>
-        )
-    }
+          ]}
+        />
+      </div>
+    )
+  }
 }
