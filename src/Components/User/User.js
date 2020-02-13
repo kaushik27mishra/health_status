@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Appbar from '../Appbar';
 import LineChart from '../Charts/LineChart';
 import axios from 'axios';
-import Typography from '@material-ui/core/Typography';
+import {Card, Row, Col} from 'react-bootstrap'
+import { Container } from '@material-ui/core';
 
 export default class User extends Component {
 
@@ -43,35 +44,67 @@ export default class User extends Component {
         return (
             <div>
                 <Appbar/>
-                <Typography variant="h6" component="h6">
-                  Age: {this.state.age}
-                </Typography>
-                <Typography variant="h6" component="h6">
-                  Gender: {this.state.gender}
-                </Typography>
-                <Typography variant="h6" component="h6">
-                  Temperature: {this.state.temp}
-                </Typography>
-                <Typography variant="h6" component="h6">
-                  Electrocardiogram Graph
-                </Typography>
-                <LineChart 
-                  data={this.state.ecg} 
-                  start={0} 
-                  end={1000} 
-                  min={110} 
-                  max={140}
-                  />
-                <Typography variant="h6" component="h6">
-                  SpO2 Graph
-                </Typography>
-                <LineChart 
-                  data={this.state.spo2} 
-                  start={0} 
-                  end={200} 
-                  min={0} 
-                  max={100}
-                  />
+                <Container>
+                  <Row style={{paddingTop:'30px',paddingBottom: '30px'}}>
+                  <Col>                
+                    <Card border="primary" >
+                      <Card.Header>Age</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          {this.state.age}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col>                
+                    <Card border="primary" >
+                      <Card.Header>Gender</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          {this.state.gender}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col>                
+                    <Card border="primary" >
+                      <Card.Header>Temperature</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          {this.state.temp} °C
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+                <Container style={{paddingTop:'30px',paddingBottom: '30px'}}>
+                  <Card >
+                    <Card.Header>Electrocardiogram Graph</Card.Header>
+                    <Card.Body>
+                      <LineChart 
+                        data={this.state.ecg} 
+                        start={0} 
+                        end={1000} 
+                        min={110} 
+                        max={150}
+                      />
+                    </Card.Body>
+                  </Card>
+                </Container >
+                <Container style={{paddingTop:'30px',paddingBottom: '30px'}}>
+                  <Card>
+                    <Card.Header>SpO2 Graph</Card.Header>
+                    <Card.Body>
+                      <LineChart 
+                        data={this.state.spo2} 
+                        start={0} 
+                        end={200} 
+                        min={0} 
+                        max={100}
+                      />
+                    </Card.Body>
+                  </Card>
+                </Container>
                 {/* <Typography variant="h6" component="h6">
                   Respiration rate
                 </Typography>
@@ -92,16 +125,21 @@ export default class User extends Component {
                   min={} 
                   max={}
                   /> */}
-                <Typography variant="h6" component="h6">
-                   Pulse Rate
-                </Typography>
-                <LineChart 
-                  data={this.state.pulse_rate} 
-                  start={0} 
-                  end={25} 
-                  min={0} 
-                  max={100}
-                  />
+                <Container style={{paddingTop:'30px',paddingBottom: '30px'}}>
+                  <Card>
+                    <Card.Header>Pulse Rate</Card.Header>
+                    <Card.Body>
+                      <LineChart 
+                        data={this.state.pulse_rate} 
+                        start={0} 
+                        end={25} 
+                        min={0} 
+                        max={100}
+                      />
+                    </Card.Body>
+                  </Card>
+                </Container>
+                </Container>
             </div>
         )
     }

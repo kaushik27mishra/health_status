@@ -13,7 +13,7 @@ export default class LineChart extends Component {
   render() {
     var ecgData = this.props.data
       
-    var data = [['ECG','key']]
+    var data = [['ECG','value']]
     for (var i=0;i<ecgData.length;++i) {
       data.push([i,ecgData[i]]);
     }
@@ -23,7 +23,7 @@ export default class LineChart extends Component {
         <Chart
           width={'100%'}
           chartType="LineChart"
-          loader={<Loader type="Bars" color="#00BFFF" height={100} width={100} timeout={3000} />}
+          loader={<Loader type="Bars" color="#00BFFF" height='30%' width='80%'/>}
           data={data}
           options={{
               chartArea: { height: '80%', width: '90%' },
