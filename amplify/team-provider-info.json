@@ -1,0 +1,20 @@
+{
+    "shms": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-health-shms-105824-authRole",
+            "UnauthRoleArn": "arn:aws:iam::488274902269:role/amplify-health-shms-105824-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::488274902269:role/amplify-health-shms-105824-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "amplify-health-shms-105824-deployment",
+            "UnauthRoleName": "amplify-health-shms-105824-unauthRole",
+            "StackName": "amplify-health-shms-105824",
+            "StackId": "arn:aws:cloudformation:ap-south-1:488274902269:stack/amplify-health-shms-105824/e75bfa60-4eea-11ea-a60c-06e4827d8e82",
+            "AmplifyAppId": "dissd0ahrzz12"
+        },
+        "categories": {
+            "auth": {
+                "health0124818b": {}
+            }
+        }
+    }
+}

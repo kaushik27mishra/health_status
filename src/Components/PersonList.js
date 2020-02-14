@@ -6,32 +6,7 @@ import Typography from '@material-ui/core/Typography'
 
 class PersonList extends Component {
     state = {
-        persons: [
-            {
-                name:"Kaushik Mishra",
-                key:1,
-                age:"19",
-                gender:"Male"
-            },
-            {
-                name:"Kaushik Mishra",
-                key:2,
-                age:"19",
-                gender:"Male"
-            },
-            {
-                name:"Kaushik Mishra",
-                key:3,
-                age:"19",
-                gender:"Male"
-            },
-            {
-                name:"Kaushik Mishra",
-                key:4,
-                age:"19",
-                gender:"Male"
-            },
-        ],
+        persons: [],
         searchString: ''
     }
 
@@ -41,8 +16,29 @@ class PersonList extends Component {
     }
 
     getPersons = () => {
-        
-        
+        // async function listAllObjectsFromS3Bucket(bucket, prefix) {
+        //     let isTruncated = true;
+        //     let marker;
+        //     while(isTruncated) {
+        //       let params = { Bucket: bucket };
+        //       if (prefix) params.Prefix = prefix;
+        //       if (marker) params.Marker = marker;
+        //       try {
+        //         const response = await s3.listObjects(params).promise();
+        //         response.Contents.forEach(item => {
+        //           console.log(item.Key);
+        //         });
+        //         isTruncated = response.IsTruncated;
+        //         if (isTruncated) {
+        //           marker = response.Contents.slice(-1)[0].Key;
+        //         }
+        //     } catch(error) {
+        //         throw error;
+        //       }
+        //     }
+        //   }
+          
+        //   listAllObjectsFromS3Bucket('<your bucket name>', '<optional prefix>');
     }
 
     onSearchInputChange = (event) => {

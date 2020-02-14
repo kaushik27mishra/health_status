@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"health0124818b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
