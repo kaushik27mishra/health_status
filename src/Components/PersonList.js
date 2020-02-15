@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Persons from './Cards/Persons'
 import Typography from '@material-ui/core/Typography'
+import { Storage } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 class PersonList extends Component {
     state = {
@@ -15,30 +17,19 @@ class PersonList extends Component {
         this.getPersons()
     }
 
+    componentDidMount() {
+
+        Auth.currentAuthenticatedUser({
+            bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+        }).then(user => console.log(user))
+        .catch(err => console.log(err));
+
+    }
+
     getPersons = () => {
-        // async function listAllObjectsFromS3Bucket(bucket, prefix) {
-        //     let isTruncated = true;
-        //     let marker;
-        //     while(isTruncated) {
-        //       let params = { Bucket: bucket };
-        //       if (prefix) params.Prefix = prefix;
-        //       if (marker) params.Marker = marker;
-        //       try {
-        //         const response = await s3.listObjects(params).promise();
-        //         response.Contents.forEach(item => {
-        //           console.log(item.Key);
-        //         });
-        //         isTruncated = response.IsTruncated;
-        //         if (isTruncated) {
-        //           marker = response.Contents.slice(-1)[0].Key;
-        //         }
-        //     } catch(error) {
-        //         throw error;
-        //       }
-        //     }
-        //   }
-          
-        //   listAllObjectsFromS3Bucket('<your bucket name>', '<optional prefix>');
+        Storage.list('/')
+        .then(result => console.log(result))
+        .catch(err => console.log(err));    
     }
 
     onSearchInputChange = (event) => {
